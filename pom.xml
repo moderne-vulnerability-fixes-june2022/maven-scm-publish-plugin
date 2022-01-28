@@ -25,7 +25,7 @@ under the License.
   <parent>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-plugins</artifactId>
-    <version>34</version>
+    <version>35-SNAPSHOT</version>
     <relativePath />
   </parent>
 
@@ -63,9 +63,9 @@ under the License.
   </distributionManagement>
 
   <properties>
-    <scmVersion>1.11.2</scmVersion>
-    <mavenVersion>3.0</mavenVersion>
-    <javaVersion>7</javaVersion>
+    <scmVersion>2.0.0-M2-SNAPSHOT</scmVersion>
+    <mavenVersion>4.0.0-alpha-1-SNAPSHOT</mavenVersion>
+    <javaVersion>8</javaVersion>
 
     <!-- for documentation purpose -->
     <maven-scm-provider-svnjava-version>2.0.6</maven-scm-provider-svnjava-version>
@@ -106,7 +106,7 @@ under the License.
     <dependency>
       <groupId>org.apache.maven.shared</groupId>
       <artifactId>maven-shared-utils</artifactId>
-      <version>3.2.1</version>
+      <version>4.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
