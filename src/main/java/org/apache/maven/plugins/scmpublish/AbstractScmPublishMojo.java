@@ -62,6 +62,8 @@ import org.apache.maven.settings.crypto.SettingsDecrypter;
 import org.apache.maven.settings.crypto.SettingsDecryptionRequest;
 import org.apache.maven.settings.crypto.SettingsDecryptionResult;
 import org.apache.maven.shared.release.config.ReleaseDescriptor;
+import org.apache.maven.shared.release.config.ReleaseDescriptorBuilder;
+import org.apache.maven.shared.release.config.ReleaseUtils;
 import org.apache.maven.shared.release.scm.ScmRepositoryConfigurator;
 import org.apache.maven.shared.utils.logging.MessageUtils;
 
@@ -321,7 +323,7 @@ public abstract class AbstractScmPublishMojo
             logInfo( "Performing a LOCAL checkout from " + scmUrl );
         }
 
-        ReleaseDescriptor releaseDescriptor = new ReleaseDescriptor();
+        ReleaseDescriptorBuilder releaseDescriptor = new ReleaseDescriptorBuilder();
         releaseDescriptor.setInteractive( settings.isInteractiveMode() );
 
         if ( username == null || password == null )
@@ -371,11 +373,13 @@ public abstract class AbstractScmPublishMojo
             }
         }
 
-        scmRepository = scmRepositoryConfigurator.getConfiguredRepository( releaseDescriptor, settings );
+        ReleaseDescriptor descriptor = ReleaseUtils.buildReleaseDescriptor( releaseDescriptor );
+
+        scmRepository = scmRepositoryConfigurator.getConfiguredRepository( descriptor, settings );
 
         scmProvider = scmRepositoryConfigurator.getRepositoryProvider( scmRepository );
 
-        return releaseDescriptor;
+        return descriptor;
     }
 
     protected void checkoutExisting()
